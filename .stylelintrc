@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 4,
+    "order/order": [
+        "custom-properties",
+        "declarations"
+    ]
+  },
+  "processors": ["stylelint-processor-html"]
+}

@@ -1,0 +1,200 @@
+@charset "utf-8";
+
+body {
+    background: #fafafa;
+}
+
+
+// 布局 page-
+.app {
+    display: flex;
+    width: 100%;
+    max-width: 950px;
+    min-height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+// 模块 mod-
+.mod-side-nav {
+    width: 20%;
+    margin-top: 70px;
+}
+
+.mod-top-nav {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    background: #fafafa;
+    line-height: 50px;
+
+    &.shadow {
+        border-bottom: 1px solid #fafafa;
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.mod-content {
+    width: 79%;
+    border-left: 1px solid #ccc;
+}
+
+.mod-footer {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    p {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+// UI ui-
+.ui-full-line {
+    width: 100%;
+}
+
+.ui-list-nav {
+    ul {
+    }
+
+    a {
+        display: block;
+        padding-left: 10px;
+        color: #1d1d1d;
+        font-size: 40px;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+}
+
+.ui-top-nav-pop .ui-list-nav {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    background: #fafafa;
+
+    a {
+        font-size: 20px;
+    }
+}
+
+.ui-list-article {
+    padding: 6%;
+
+    li {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    a {
+        color: #1d1d1d;
+    }
+
+    a:hover {
+        color: #111;
+    }
+}
+
+.ui-top-nav {
+    .nav-toggle {
+        padding: 10px;
+        margin-left: 15px;
+        font-size: 20px;
+    }
+
+    .ui-top-nav-pop {
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 50%;
+        height: 100%;
+        background: #fff;
+
+        &.show {
+            display: block;
+        }
+    }
+}
+
+.ui-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.ui-markdown {
+    padding: 6%;
+}
+
+.ui-article-preview {
+    padding: 5px;
+    background: #f3f3f3;
+}
+
+.ui-article-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    a {
+        padding: 2px 7px;
+        background: #3e3e3e;
+        border-radius: 3px;
+        color: #ececec;
+        font-size: 13px;
+    }
+
+    a:hover {
+        color: #ececec;
+    }
+
+    a:not(:first-of-type) {
+        margin-left: 10px;
+    }
+}
+
+.ui-page-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 40px;
+
+    .next {
+        margin-left: 70px;
+    }
+}
+
+.ui-about {
+    padding: 6%;
+}
+
+@media screen and (max-width: 414px) {
+    .mod-content {
+        width: 100%;
+        border-left: 0;
+        margin-top: 50px;
+    }
+
+    .mod-top-nav {
+        display: block;
+    }
+
+    .mod-side-nav {
+        display: none;
+    }
+}
+
