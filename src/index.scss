@@ -1,200 +1,119 @@
-@charset "utf-8";
-
-body {
-    background: #fafafa;
-}
-
-
-// 布局 page-
-.app {
-    display: flex;
-    width: 100%;
-    max-width: 950px;
-    min-height: 100vh;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-
-// 模块 mod-
-.mod-side-nav {
-    width: 20%;
-    margin-top: 70px;
-}
-
-.mod-top-nav {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 50px;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    background: #fafafa;
-    line-height: 50px;
-
-    &.shadow {
-        border-bottom: 1px solid #fafafa;
-        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+.layout {
+  position: relative;
+  &.layout-main { //主体布局
+    > .top {
+      position: fixed;
+      display: block;
+      top: 0;
+      width: 100%;
+      height: $top-height;
+      background: $bg-top;
+      z-index: 100;
+      transition: background .5s ease-in-out;
+      z-index:10000;
     }
-}
-
-.mod-content {
-    width: 79%;
-    border-left: 1px solid #ccc;
-}
-
-.mod-footer {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-
-    p {
-        width: 90%;
-        margin: 0 auto;
+    > .slide {
+      position: fixed;
+      display: block;
+      left: 0;
+      bottom: 0;
+      top: $top-height;
+      width: $slide-width;
+      background: $bg-slide;
+      box-shadow: 0 1px 1px $color-base6;
+      z-index: 99;
+      transition: all .5s ease-in-out;
     }
-}
-
-
-// UI ui-
-.ui-full-line {
-    width: 100%;
-}
-
-.ui-list-nav {
-    ul {
-    }
-
-    a {
+    > .mainWrapper {
+      height: 100%;
+      background: $bg-main;
+      > .menu {
+        position: absolute;
         display: block;
-        padding-left: 10px;
-        color: #1d1d1d;
-        font-size: 40px;
-
-        &:hover {
-            background: #ccc;
+        right: 0;
+        top: $top-height;
+        left: $slide-width;
+        height: $menu-height;
+        line-height: $menu-height;
+        padding-left: $main-padding;
+        border-bottom: $menu-border;
+        background-color: $color-base4;
+        font-size: 16px;
+        background: $color-base4;
+        z-index: 98;
+        > .item {
+          display: inline-block;
+          min-width: 118px;
+          height: 100%;
+          padding: 5px 10px 0;
+          margin-top: 1px;
+          text-align: center;
+          &.active, &.linkActive {
+            border-bottom: $menu-border-active;
+            color: $brand-danger;
+          }
         }
-    }
-}
-
-.ui-top-nav-pop .ui-list-nav {
-    position: fixed;
-    width: 50%;
-    height: 100%;
-    background: #fafafa;
-
-    a {
-        font-size: 20px;
-    }
-}
-
-.ui-list-article {
-    padding: 6%;
-
-    li {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #ccc;
-    }
-
-    a {
-        color: #1d1d1d;
-    }
-
-    a:hover {
-        color: #111;
-    }
-}
-
-.ui-top-nav {
-    .nav-toggle {
-        padding: 10px;
-        margin-left: 15px;
-        font-size: 20px;
-    }
-
-    .ui-top-nav-pop {
-        position: fixed;
-        z-index: 2;
-        top: 0;
-        left: 0;
-        display: none;
-        width: 50%;
+        & + .main {
+          padding-top: $top-height + $menu-height + 20px;
+        }
+      }
+      > .main {
+        position: relative;
+        display: block;
         height: 100%;
-        background: #fff;
-
-        &.show {
-            display: block;
+        margin-left: $slide-width;
+        padding-left: $main-padding;
+        padding-right: $main-padding;
+        padding-top: $top-height + 20px;
+        padding-bottom: 20px;
+        min-width:1080px;
+        @media screen and (max-height:914px){
+          height:auto;
         }
+      }
     }
-}
-
-.ui-mask {
+  }
+  &.layout-bd { //左侧固定布局
+    $left-width: 120px !default;
+    > .md {
+      float: left;
+      width: $left-width;
+      margin-right: - $left-width;
+    }
+    > .mn {
+      width: 100%;
+      > .mnc {
+        margin-left: $left-width;
+      }
+    }
+  }
+  &.layout-mask { //遮罩
     position: fixed;
+    display: table;
+    table-layout: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.ui-markdown {
-    padding: 6%;
-}
-
-.ui-article-preview {
-    padding: 5px;
-    background: #f3f3f3;
-}
-
-.ui-article-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-
-    a {
-        padding: 2px 7px;
-        background: #3e3e3e;
-        border-radius: 3px;
-        color: #ececec;
-        font-size: 13px;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+    .mn {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      .mnc{
+        position: relative;
+        display: inline-block;
+      }
     }
-
-    a:hover {
-        color: #ececec;
+  }
+  &.layout-table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    >.cell{
+      display: table-cell;
+      vertical-align: top;
     }
-
-    a:not(:first-of-type) {
-        margin-left: 10px;
-    }
+  }
 }
-
-.ui-page-navigation {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    font-size: 40px;
-
-    .next {
-        margin-left: 70px;
-    }
-}
-
-.ui-about {
-    padding: 6%;
-}
-
-@media screen and (max-width: 414px) {
-    .mod-content {
-        width: 100%;
-        border-left: 0;
-        margin-top: 50px;
-    }
-
-    .mod-top-nav {
-        display: block;
-    }
-
-    .mod-side-nav {
-        display: none;
-    }
-}
-

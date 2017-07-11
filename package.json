@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:js": "eslint --ext .js,.vue src --fix",
+    "fmt:js": "eslint --ext .js,.vue src --fix",
     "lint:css": "stylelint src/index.vue --syntax scss",
     "fmt:css": "stylefmt src/index.scss"
   },
