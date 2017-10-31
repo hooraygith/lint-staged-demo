@@ -1,14 +1,17 @@
+<template>
+    <div>
 
-.info {
-    display: inline-block;
-    min-width: 96px;
-    margin-bottom: 0;
-
-    .aa{
-        display: flex;
-
-        .bb {
-            display: flex;
+    </div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            test: '测试空格'
         }
+    },
+    created() {
+      alert('测试缩进')
     }
 }
+</script>

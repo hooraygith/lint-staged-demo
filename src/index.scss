@@ -1,9 +1,11 @@
+// 测试scss格式化
+
 .layout {
   position: relative;
   &.layout-main { //主体布局
     > .top {
-      position: fixed;
       display: block;
+      position: fixed;
       top: 0;
       width: 100%;
       height: $top-height;

@@ -5,8 +5,6 @@ require('../vendor/github.less')
 require('../vendor/prism.less')
 require('./css/reset.less')
 require('./css/index.less')
-const FastClick = require('fastclick')
-window.FastClick = FastClick
 const Vue = require('vue')
 const router = require('./router')
 
@@ -21,17 +19,15 @@ const App = new Vue({
     data: {
         scrolled: false
     },
-    created: function() {
-        document.addEventListener('touchend', () => {
+    created:function(){    // 测试空格
+        document.addEventListener('touchend',() => {
             if (document.body.scrollTop > 20) {
                 this.scrolled = true
             } else {
-                this.scrolled = false
+              this.scrolled = false    // 测试缩进
             }
-        }, {passive: true})
+        },{passive:true})// 测试空格
     }
 })
 
 App.$mount('#app')
-
-console.log('success!!')
